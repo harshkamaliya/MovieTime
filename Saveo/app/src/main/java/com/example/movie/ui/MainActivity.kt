@@ -1,9 +1,13 @@
 package com.example.movie.ui
 
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movie.R
@@ -20,6 +24,8 @@ import com.ouattararomuald.slider.loaders.picasso.PicassoImageLoaderFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MovieClickListener {
+    private val TAG = "tag"
+
 
     private lateinit var moviesAdapter: MovieAdapter
     private var moviesListData: List<ResponseDTO> = listOf()
@@ -35,13 +41,13 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setRecyclerAdatapter()
+        setRecyclerAdapter()
         imageSlider = image_slider
 
         val appObj = application as UserApplication
 
-        val reposotory: PostDataRepository = appObj.repository
-        val viewModelFactory: MoviesViewModelFactory = MoviesViewModelFactory(reposotory)
+        val repository: PostDataRepository = appObj.repository
+        val viewModelFactory: MoviesViewModelFactory = MoviesViewModelFactory(repository)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(PostDataViewModel::class.java)
 
@@ -65,14 +71,54 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
                 imageUrls = imageUrls
             )
 
-
-
         }
+
+        if(isNetworkConnected()){
+            viewModel.getPosts().observe(this,{
+
+                val resp: List<ResponseDTO> = it!!
+
+                Log.d(TAG, "Response is ${resp.size}")
+                moviesListData = resp;
+                moviesAdapter.updateData(resp)
+
+            })
+        }
+        else {
+
+            Toast.makeText(this, " No Internet ", Toast.LENGTH_SHORT)
+                .show()
+        }
+
 
 
     }
 
-    private fun setRecyclerAdatapter() {
+
+    override fun onBackPressed() {
+        showCloseAppDialogue()
+    }
+
+    private fun showCloseAppDialogue() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Close App ?")
+        builder.setMessage("Do You Wants to Close the App")
+
+        builder.setPositiveButton("YES", DialogInterface.OnClickListener { dialog, id ->
+            finish()
+        })
+
+        builder.setNegativeButton("NO", DialogInterface.OnClickListener { dialog, id ->
+            dialog.dismiss()
+
+        })
+
+        builder.setCancelable(true)
+        builder.show()
+    }
+
+    private fun setRecyclerAdapter() {
 
         moviesAdapter = MovieAdapter(moviesListData, this)
         val gridLayoutManager = GridLayoutManager(this, 3)
@@ -81,6 +127,8 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
     }
 
     override fun onItemClick(data: ResponseDTO) {
+        Log.d(TAG, "Movie Clicked is ${data.show?.externals?.tvrage}")
+
 
 
     }
