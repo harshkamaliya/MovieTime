@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
     /*all colors here*/
+    <color name="blue">#184862</color>
+    <color name="blueLight">#275B78</color>
+    <color name="light_blue">#2B3148</color>
+    <color name="dark_blue">#222539</color>
+
+
     <color name="AliceBlue">#f0f8ff</color>
     <color name="AntiqueWhite">#faebd7</color>
     <color name="Aqua">#00ffff</color>

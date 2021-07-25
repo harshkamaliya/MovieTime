@@ -1,11 +1,10 @@
-package com.example.movie.ui
+package com.example.movie.ui.screens
 
 import android.content.DialogInterface
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
@@ -119,7 +118,6 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
     }
 
     private fun setRecyclerAdapter() {
-
         moviesAdapter = MovieAdapter(moviesListData, this)
         val gridLayoutManager = GridLayoutManager(this, 3)
         rvVertical.layoutManager = gridLayoutManager
@@ -129,11 +127,9 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
     override fun onItemClick(data: ResponseDTO) {
         Log.d(TAG, "Movie Clicked is ${data.show?.externals?.tvrage}")
 
-
-
     }
 
-    private fun isNetworkConnected(): Boolean {
+    private fun isNetworkConnected():Boolean {
         val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
 

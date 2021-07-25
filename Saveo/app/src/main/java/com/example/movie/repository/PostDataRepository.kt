@@ -1,5 +1,6 @@
 package com.example.movie.repository
 
+import com.example.movie.dataModel.PageResponseDTO
 import com.example.movie.dataModel.ResponseDTO
 import com.example.movie.dataModel.ShowDTO
 import com.example.movie.remote.APIService
@@ -15,9 +16,17 @@ class PostDataRepository() {
     private val responseHandler = ResponseHandler()
 
     suspend fun getPosts() : Resource<List<ResponseDTO>> {
-        val result : List<ResponseDTO> = api.getAllMoviePost(CONTENT_TYPE,"god")
+        val result : List<ResponseDTO> = api.getAllMoviePost(CONTENT_TYPE,"1")
         return  responseHandler.handleSuccess(result)
     }
+
+//    suspend fun getMoviewByPage() : Resource<List<PageResponseDTO>>{
+//
+//        val result : List<PageResponseDTO> = api.getMoviewByPage(CONTENT_TYPE, "1")
+//
+//        return  responseHandler.handleSuccess(result)
+//
+//    }
 
 
 

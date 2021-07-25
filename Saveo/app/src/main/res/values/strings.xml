@@ -2,4 +2,11 @@
     <string name="app_name">Movie</string>
     <string name="movies">Movies</string>
     <string name="now_showing">Now Showing</string>
+    <string name="book_now">BOOK NOW</string>
+    <string name="some_time_after">Some Time after</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="the_hateful_eight">The HateFul Eight</string>
+    <string name="_30_dec_2015">30 Dec,2015</string>
+    <string name="q">|</string>
+    <string name="_3h_7min">3h 7min</string>
 </resources>
