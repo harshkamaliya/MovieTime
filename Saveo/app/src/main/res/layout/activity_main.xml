@@ -39,7 +39,7 @@
                     android:layout_gravity="center"
                     android:text="@string/movies"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/dp_20"
+                    android:textSize="@dimen/sp_20"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -75,11 +75,12 @@
                     android:layout_height="300dp"
                     android:orientation="vertical">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvHorizontal"
+                    <com.ouattararomuald.slider.ImageSlider
+                        android:id="@+id/image_slider"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" />
+                        android:layout_height="250dp"
+                        android:layout_margin="@dimen/dp_20" />
+
 
                 </LinearLayout>
 

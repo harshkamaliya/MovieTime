@@ -1,5 +1,6 @@
 package com.example.movie.repository
 
+import com.example.movie.dataModel.ResponseDTO
 import com.example.movie.dataModel.ShowDTO
 import com.example.movie.remote.APIService
 import com.example.movie.remote.Resource
@@ -13,17 +14,13 @@ class PostDataRepository() {
     private val api : APIService = RetrofitGenerator.getInstance().create(APIService::class.java)
     private val responseHandler = ResponseHandler()
 
-    suspend fun getPosts() : Resource<List<ShowDTO>> {
-        val result : List<ShowDTO> = api.getAllPosts(CONTENT_TYPE)
+    suspend fun getPosts() : Resource<List<ResponseDTO>> {
+        val result : List<ResponseDTO> = api.getAllMoviePost(CONTENT_TYPE,"god")
         return  responseHandler.handleSuccess(result)
     }
 
 
 
-//    suspend fun getMoviewByPage() : Resource<List<ShowDTO>>{
-//        val result : List<ShowDTO> = api.getMoviewByPage(CONTENT_TYPE, "1")
-//        return  responseHandler.handleSuccess(result)
-//    }
 
 
 

@@ -7,4 +7,5 @@ import com.example.movie.dataModel.ResponseDTO
     fun onItemClick(data:ResponseDTO)
 
 
+
 }
