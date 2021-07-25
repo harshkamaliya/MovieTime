@@ -7,4 +7,4 @@ data class PreviousepisodeDTO(
 
 	@field:SerializedName("href")
 	val href: String? = null
-)
+):Serializable

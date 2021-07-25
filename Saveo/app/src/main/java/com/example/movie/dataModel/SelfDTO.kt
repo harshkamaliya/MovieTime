@@ -7,4 +7,4 @@ data class SelfDTO(
 
 	@field:SerializedName("href")
 	val href: String? = null
-)
+):Serializable

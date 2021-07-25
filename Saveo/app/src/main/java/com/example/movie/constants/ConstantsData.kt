@@ -7,6 +7,9 @@ object ConstantsData {
 
     const val PAGE_END_POINT = "shows"
 
+    const val DATA_KEY = "DATA";
+
+
 
 
 }

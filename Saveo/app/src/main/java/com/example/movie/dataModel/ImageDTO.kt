@@ -10,4 +10,4 @@ data class ImageDTO(
 
 	@field:SerializedName("medium")
 	val medium: String? = null
-)
+):Serializable

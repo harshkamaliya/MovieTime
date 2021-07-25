@@ -13,4 +13,4 @@ data class CountryDTO(
 
 	@field:SerializedName("name")
 	val name: String? = null
-)
+):Serializable

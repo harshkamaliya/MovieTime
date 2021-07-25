@@ -10,4 +10,4 @@ data class ResponseDTO(
 
 	@field:SerializedName("show")
 	val show: ShowDTO? = null
-)
+):Serializable

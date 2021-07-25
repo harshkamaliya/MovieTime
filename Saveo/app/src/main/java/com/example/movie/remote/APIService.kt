@@ -15,17 +15,17 @@ interface APIService {
     // Get All Available Properties
 
     @Headers("Accept: application/json")
-    @GET(ConstantsData.PAGE_END_POINT)
+    @GET(ConstantsData.POSTS_END_POINT)
     suspend fun getAllMoviePost(
         @Header("Content-Type") contentType: String,
-        @Query("page") query: String,
+        @Query("q") query: String,
     ): ArrayList<ResponseDTO>
 
-    @Headers("Accept: application/json")
-    @GET(ConstantsData.PAGE_END_POINT)
-    suspend fun getMoviewByPage(
-        @Header("Content-Type") contentType: String,
-        @Query("page") pageNo : String,
-    ) : List<PageResponseDTO>
+//    @Headers("Accept: application/json")
+//    @GET(ConstantsData.PAGE_END_POINT)
+//    suspend fun getMoviewByPage(
+//        @Header("Content-Type") contentType: String,
+//        @Query("page") pageNo : String,
+//    ) : List<PageResponseDTO>
 
 }

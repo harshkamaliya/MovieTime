@@ -132,8 +132,9 @@
                     app:cardElevation="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <ImageView
-                        android:id="@+id/detailsImage"
+                        android:id="@+id/ivDetailsImage"
                         android:layout_width="100dp"
                         android:layout_height="160dp"
                         android:src="@drawable/ic_launcher_background"
@@ -166,7 +167,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="30dp"/>
             <TextView
-                android:id="@+id/textContent"
+                android:id="@+id/tv_movie_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tvSynopsis"

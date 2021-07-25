@@ -16,7 +16,7 @@ class PostDataRepository() {
     private val responseHandler = ResponseHandler()
 
     suspend fun getPosts() : Resource<List<ResponseDTO>> {
-        val result : List<ResponseDTO> = api.getAllMoviePost(CONTENT_TYPE,"1")
+        val result : List<ResponseDTO> = api.getAllMoviePost(CONTENT_TYPE,"horror")
         return  responseHandler.handleSuccess(result)
     }
 

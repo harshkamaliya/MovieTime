@@ -7,4 +7,4 @@ data class RatingDTO(
 
 	@field:SerializedName("average")
 	val average: Any? = null
-)
+):Serializable

@@ -10,4 +10,4 @@ data class ScheduleDTO(
 
 	@field:SerializedName("time")
 	val time: String? = null
-)
+):Serializable

@@ -10,4 +10,4 @@ data class LinksDTO(
 
 	@field:SerializedName("previousepisode")
 	val previousepisode: PreviousepisodeDTO? = null
-)
+):Serializable

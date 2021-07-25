@@ -13,4 +13,4 @@ data class NetworkDTO(
 
 	@field:SerializedName("id")
 	val id: Int? = null
-)
+):Serializable

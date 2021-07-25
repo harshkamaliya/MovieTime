@@ -13,4 +13,4 @@ data class ExternalsDTO(
 
 	@field:SerializedName("tvrage")
 	val tvrage: Int? = null
-)
+):Serializable
