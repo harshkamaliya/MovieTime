@@ -20,7 +20,7 @@ class MyNetworkBroadCast(val context: Context, val networkListner: NetworkListen
 
             } else {
 
-                Log.d(TAG, "Conectivity Failure !!! ")
+                Log.d(TAG, "Connection Failure !!! ")
                 networkListner.onNetworkChangeUpdates("NO")
             }
         } catch (e: NullPointerException) {

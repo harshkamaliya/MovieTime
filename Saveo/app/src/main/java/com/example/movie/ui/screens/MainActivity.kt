@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity(), MovieClickListener, NetworkListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setRecyclerAdapter()
         imageSlider = image_slider
         mNetworkReceiver = MyNetworkBroadCast(this, this)
@@ -50,11 +49,9 @@ class MainActivity : AppCompatActivity(), MovieClickListener, NetworkListener {
 
 
         val appObj = application as UserApplication
-
         val repository: PostDataRepository = appObj.repository
         val viewModelFactory: MoviesViewModelFactory = MoviesViewModelFactory(repository)
-
-        viewModel = ViewModelProviders.of(this).get(PostDataViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(PostDataViewModel::class.java)
 
 
         if (isNetworkConnected()) {
@@ -72,7 +69,6 @@ class MainActivity : AppCompatActivity(), MovieClickListener, NetworkListener {
                 imageUrls = imageUrls
             )
         }
-
 
         if (isNetworkConnected()) {
             viewModel.getPosts().observe(this, {
@@ -124,16 +120,15 @@ class MainActivity : AppCompatActivity(), MovieClickListener, NetworkListener {
         Log.d(TAG, "Movie Clicked is ${data.show?.externals?.tvrage}")
         goToMovieDetails(data)
 
-
     }
 
     private fun goToMovieDetails(movieData: ResponseDTO) {
 
-        val intent = Intent(this, MovieDetail::class.java)
+        intent = Intent(this, MovieDetail::class.java)
         intent.putExtra(ConstantsData.DATA_KEY, movieData)
         startActivity(intent);
         overridePendingTransition(R.raw.enter_first, R.raw.enter_second);
-        finish();
+       // finish();
     }
 
     private fun isNetworkConnected(): Boolean {
@@ -146,13 +141,10 @@ class MainActivity : AppCompatActivity(), MovieClickListener, NetworkListener {
     override fun onNetworkChangeUpdates(data: String) {
         Log.d(TAG, "Network is ${data}")
 
-        if (moviesListData.isEmpty() && data.equals("YES")) {
-
+        if (moviesListData.isEmpty() && data=="YES") {
 
             Toast.makeText(this, "Network Arrived Requesting Data ", Toast.LENGTH_SHORT)
                 .show()
-
-
 
             viewModel.getPosts().observe(this, {
 

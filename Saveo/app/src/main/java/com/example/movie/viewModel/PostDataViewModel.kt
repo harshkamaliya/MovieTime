@@ -9,7 +9,7 @@ import com.example.movie.remote.Resource
 import com.example.movie.repository.PostDataRepository
 import kotlinx.coroutines.Dispatchers
 
-class PostDataViewModel(val repo : PostDataRepository):ViewModel()
+class PostDataViewModel(private val repo : PostDataRepository):ViewModel()
 {
 
 

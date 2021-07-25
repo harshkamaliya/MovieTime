@@ -20,6 +20,12 @@ class MovieDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
+        assert(
+            supportActionBar != null //null check
+        )
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+
         val inData = intent.getSerializableExtra(ConstantsData.DATA_KEY) as? ResponseDTO
         if (inData != null) {
             localData(inData)
@@ -29,13 +35,13 @@ class MovieDetail : AppCompatActivity() {
     }
 
     private fun localData(inData: ResponseDTO) {
-        Glide.with(this).load(inData?.show?.image?.medium).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivDetailsImage)
-        tvBg.text=inData?.show?.name
-        tv_movie_description.text= Html.fromHtml(inData?.show?.summary)
+        Glide.with(this).load(inData.show?.image?.medium).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivDetailsImage)
+        tvBg.text=inData.show?.name
+        tv_movie_description.text= Html.fromHtml(inData.show?.summary)
         movieRating.numStars=5
         movieRating.stepSize=0.5F
-        movieRating.stepSize= (inData.show?.rating?.average as Float?)!!
-        ratingValue.text="${inData.show?.rating?.average}"
+        movieRating.rating= ((inData.show?.rating?.average as Float?)!!)
+        ratingValue.text="${inData.show?.rating?.average!!}"
         movieTitle.text="${inData.show?.genres}"
         movieTime.text="${inData.show?.type}"
         movieDate.text="${inData.show?.averageRuntime?.let { Utils.getTimeConverted(it*60) }}"
