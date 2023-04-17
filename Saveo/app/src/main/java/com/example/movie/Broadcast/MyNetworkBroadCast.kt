@@ -26,6 +26,7 @@ class MyNetworkBroadCast(val context: Context, val networkListner: NetworkListen
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
+        //new
 
     }
 
